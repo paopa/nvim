@@ -1,7 +1,6 @@
 # nvim
 
 ## Plugins
-- Github Copilot
-    - see [Github Copilot](https://github.com/zbirenbaum/copilot.lua) to enable it in Neovim
-- Telescope
-    - see [Telescope](https://github.com/nvim-telescope/telescope.nvim) to know more features
+- [zbirenbaum/copilot.lua](https://github.com/zbirenbaum/copilot.lua)
+- [CopilotC-Nvim/CopilotChat.nvim](https://github.com/CopilotC-Nvim/CopilotChat.nvim)
+- [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
