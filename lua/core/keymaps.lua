@@ -25,12 +25,22 @@ keymap.set("n", "<leader>sv", "<C-w>v") -- vertical split
 keymap.set("n", "<leader>sh", "<C-w>s") -- horizontal split
 keymap.set("n", "<leader>se", "<C-w>=") -- equalize split
 keymap.set("n", "<leader>sc", "<C-w>c") -- close split
+
 keymap.set("n", "<leader>sj", "<C-w>j") -- move to split below
 keymap.set("n", "<leader>sk", "<C-w>k") -- move to split above
 keymap.set("n", "<leader>sh", "<C-w>h") -- move to split left
 keymap.set("n", "<leader>sl", "<C-w>l") -- move to split right
 keymap.set("n", "<leader>sw", "<C-w>w") -- move to next split
+
 keymap.set("n", "<leader>sjj", "<C-w>-") -- make split window height shorter
 keymap.set("n", "<leader>skk", "<C-w>+") -- make split window height taller
 keymap.set("n", "<leader>sll", "<C-w>>5") -- make split window width wider
 keymap.set("n", "<leader>shh", "<C-w><5") -- make split window width narrower
+
+-- Tab management
+keymap.set("n", "<leader>to", ":tabnew<CR>") -- new tab
+keymap.set("n", "<leader>tc", ":tabclose<CR>") -- close tab
+keymap.set("n", "<leader>tco", ":tabonly<CR>") -- close other tabs
+keymap.set("n", "<leader>tn", ":tabnext<CR>") -- next tab
+keymap.set("n", "<leader>tp", ":tabprevious<CR>") -- previous tab
+
