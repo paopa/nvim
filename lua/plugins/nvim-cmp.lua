@@ -29,7 +29,7 @@ return {
     local luasnip = require('luasnip')
     require('luasnip.loaders.from_vscode').lazy_load()
     luasnip.config.setup({})
-    
+
     cmp.setup({
       snippet = {
         expand = function(args)
@@ -71,6 +71,7 @@ return {
         end, { 'i', 's' }),
       },
       sources = cmp.config.sources({
+        { name = "copilot", group_index = 2},
         { name = "nvim_lsp" }, -- lsp 
         { name = "luasnip" }, -- snippets
         { name = "buffer" }, -- text within current buffer
