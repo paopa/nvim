@@ -23,10 +23,13 @@ return {
     'hrsh7th/cmp-path',
     -- https://github.com/hrsh7th/cmp-cmdline
     'hrsh7th/cmp-cmdline',
+    -- https://github.com/onsails/lspkind.nvim
+    'onsails/lspkind.nvim'
   },
   config = function()
     local cmp = require('cmp')
     local luasnip = require('luasnip')
+    local lspkind = require('lspkind')
     require('luasnip.loaders.from_vscode').lazy_load()
     luasnip.config.setup({})
 
@@ -82,7 +85,16 @@ return {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
       },
-    })
+      formatting = {
+          format = lspkind.cmp_format({
+            mode = 'symbol', -- show only symbol annotations
+            maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+            symbol_map = {
+                Copilot = ""
+            },
+          })
+        }
+      })
   end,
  }
 
