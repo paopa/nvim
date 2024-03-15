@@ -7,14 +7,14 @@ opt.number = true
 opt.relativenumber = true
 
 -- Tabs and Indentation
-opt.tabstop = 8 -- Number of spaces that a <Tab> in the file counts for
-opt.shiftwidth = 4 -- Number of spaces to use for each step of (auto)indent
+opt.tabstop = 2 -- Number of spaces that a <Tab> in the file counts for
+opt.shiftwidth = 2 -- Number of spaces to use for each step of (auto)indent
 -- Use spaces instead of tabs, so when you hit <Tab> it inserts spaces instead of a tab character
 -- To insert a real tab when 'expandtab' is on, use CTRL-V<Tab>.
-opt.expandtab = true 
+opt.expandtab = true
 opt.autoindent = true -- Copy indent from current line when starting a new line
 -- Number of spaces that a <Tab> counts for while performing editing operations, like inserting a <Tab> or using <BS>
-opt.softtabstop = 4 
+opt.softtabstop = 2
 
 -- Line Wrapping
 opt.wrap = false
@@ -26,7 +26,7 @@ opt.hlsearch = false
 opt.incsearch = true
 
 -- Cursor Line
-opt.cursorline = true 
+opt.cursorline = true
 opt.scrolloff = 8 -- Minimal number of screen lines to keep above and below the cursor
 
 -- Appearance
@@ -51,12 +51,12 @@ opt.splitright = true
 opt.splitbelow = true
 
 -- Disable Swap and Backup
-opt.swapfile = false 
-opt.backup = false 
+opt.swapfile = false
+opt.backup = false
 
 -- Undodir 
-opt.undodir = os.getenv("HOME") .. "/.vim/undodir" 
-opt.undofile = true 
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.undofile = true
 
 -- Listchars
 opt.isfname:append("@-@") -- Add @ to the list of characters that are allowed in a file name
