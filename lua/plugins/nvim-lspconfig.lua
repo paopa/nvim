@@ -13,13 +13,17 @@ return {
 
     -- Useful status updates for LSP
     -- https://github.com/j-hui/fidget.nvim
-    { 'j-hui/fidget.nvim', opts = {} },
+    { 'j-hui/fidget.nvim',                        opts = {} },
 
     -- Additional lua configuration, makes nvim stuff amazing!
     -- https://github.com/folke/neodev.nvim
-    {'folke/neodev.nvim' },
+    { 'folke/neodev.nvim' },
+
+    -- Install or upgrade all of the third-part tools.
+    -- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim
+    { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
   },
-  config = function ()
+  config = function()
     require('mason').setup()
     require('mason-lspconfig').setup({
       -- Install these LSPs automatically
@@ -37,22 +41,23 @@ return {
       }
     })
 
-    -- I don't know why it's not working, so keeping it commented out for now
-    -- require('mason-tool-installer').setup({
-    --   -- Install these linters, formatters, debuggers automatically
-    --   ensure_installed = {
-    --     'black',
-    --     'debugpy',
-    --     'flake8',
-    --     'isort',
-    --     'mypy',
-    --     'pylint',
-    --   },
-    -- })
+    require('mason-tool-installer').setup({
+      -- Install these linters, formatters, debuggers automatically
+      ensure_installed = {
+        'black',
+        'debugpy',
+        'flake8',
+        'isort',
+        'mypy',
+        'pylint',
+      },
+    })
 
-    -- There is an issue with mason-tools-installer running with VeryLazy, since it triggers on VimEnter which has already occurred prior to this plugin loading so we need to call install explicitly
+    -- There is an issue with mason-tools-installer running with VeryLazy,
+    -- since it triggers on VimEnter which has already occurred prior to this plugin loading
+    -- so we need to call install explicitly
     -- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim/issues/39
-    -- vim.api.nvim_command('MasonToolsInstall')
+    vim.api.nvim_command('MasonToolsInstall')
 
     local lspconfig = require('lspconfig')
     local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -76,7 +81,7 @@ return {
         Lua = {
           diagnostics = {
             -- Get the language server to recognize the `vim` global
-            globals = {'vim'},
+            globals = { 'vim' },
           },
         },
       },
@@ -89,7 +94,6 @@ return {
       opts.border = opts.border or "rounded" -- Set border to rounded
       return open_floating_preview(contents, syntax, opts, ...)
     end
-
 
     -- Keymaps for LSP
     local keymap = vim.keymap
@@ -109,7 +113,5 @@ return {
     keymap.set('n', '<leader>gn', '<cmd>lua vim.diagnostic.goto_next()<CR>')
     keymap.set('n', '<leader>tr', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
     keymap.set('i', '<C-Space>', '<cmd>lua vim.lsp.buf.completion()<CR>')
-
   end
 }
-
