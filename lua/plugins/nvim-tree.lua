@@ -14,6 +14,9 @@ return {
         },
       }
     },
+    filters = {
+      git_ignored = false,
+    },
   },
   config = function (_, opts)
     -- Recommended settings to disable default netrw file explorer
