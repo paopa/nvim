@@ -21,10 +21,10 @@ keymap.set("x", "<leader>p", [["_dP]])
 keymap.set("n", "<leader>Y", [["+Y]])
 
 -- Split window management
-keymap.set("n", "<leader>sv", "<C-w>v") -- vertical split
-keymap.set("n", "<leader>sh", "<C-w>s") -- horizontal split
-keymap.set("n", "<leader>se", "<C-w>=") -- equalize split
-keymap.set("n", "<leader>sc", "<C-w>c") -- close split
+keymap.set("n", "<leader>vs", "<C-w>v") -- vertical split
+keymap.set("n", "<leader>hs", "<C-w>s") -- horizontal split
+keymap.set("n", "<leader>es", "<C-w>=") -- equalize split
+keymap.set("n", "<leader>cs", "<C-w>c") -- close split
 
 keymap.set("n", "<leader>sj", "<C-w>j") -- move to split below
 keymap.set("n", "<leader>sk", "<C-w>k") -- move to split above
@@ -44,3 +44,5 @@ keymap.set("n", "<leader>tco", ":tabonly<CR>") -- close other tabs
 keymap.set("n", "<leader>tn", ":tabnext<CR>") -- next tab
 keymap.set("n", "<leader>tp", ":tabprevious<CR>") -- previous tab
 
+-- Open Terminal
+keymap.set("n", "<leader>tt", ":terminal<CR>") -- open terminal
