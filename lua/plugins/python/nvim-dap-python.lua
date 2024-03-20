@@ -6,8 +6,9 @@ return {
     -- https://github.com/mfussenegger/nvim-dap
     'mfussenegger/nvim-dap',
   },
-  config = function ()
+  config = function()
     -- Update the path passed to setup to point to your system or virtual env python binary
-    require('dap-python').setup('/usr/bin/python3')
+    local path = require('venv-selector').get_active_path()
+    require("dap-python").setup(path)
   end
 }
