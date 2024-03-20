@@ -16,10 +16,11 @@ return {
     auto_install = true, -- automatically install syntax support when entering new file type buffer
     ensure_installed = {
       'lua',
+      'python',
     },
   },
   config = function (_, opts)
-    local configs = require("nvim-treesitter.configs")
-    configs.setup(opts)
+    -- treesitter loads the opts in the config moudle and not the main module
+    require("nvim-treesitter.configs").setup(opts)
   end
 }
