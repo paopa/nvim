@@ -5,14 +5,21 @@ return {
   opts    = {
     direction = 'float',
   },
-  config  = function(_, opts)
-    require('toggleterm').setup(opts)
-
-    local keymap = vim.keymap
-    keymap.set("n", "<leader>tt", ":ToggleTerm<CR>") -- open terminal
+  keys    = {
+    { "<leader>tt", ":ToggleTerm<CR>",            mode = 'n', desc = 'open terminal' },
     -- I saw the answer to solve how to exit terminal in the neovim in the following link
     -- https://www.reddit.com/r/neovim/comments/wk1vcc/how_to_exit_terminal_or_float_term/
-    keymap.set('t', '<C-t>', '<C-\\><C-n>:ToggleTerm<CR>', { noremap = true, silent = true })
+    { '<C-t>',      '<C-\\><C-n>:ToggleTerm<CR>', mode = 't', desc = 'close terminal' },
+    {
+      '<leader>lg',
+      '<cmd>lua _lazygit_toggle()<CR>',
+      mode = 'n',
+      { noremap = true, silent = true },
+      desc = 'lazygit'
+    }
+  },
+  config  = function(_, opts)
+    require('toggleterm').setup(opts)
 
     -- lazygit
     local Terminal = require('toggleterm.terminal').Terminal
@@ -21,7 +28,5 @@ return {
     function _lazygit_toggle()
       lazygit:toggle()
     end
-
-    vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
   end
 }
