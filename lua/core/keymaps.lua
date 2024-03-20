@@ -43,6 +43,3 @@ keymap.set("n", "<leader>tc", ":tabclose<CR>") -- close tab
 keymap.set("n", "<leader>tco", ":tabonly<CR>") -- close other tabs
 keymap.set("n", "<leader>tn", ":tabnext<CR>") -- next tab
 keymap.set("n", "<leader>tp", ":tabprevious<CR>") -- previous tab
-
--- Open Terminal
-keymap.set("n", "<leader>tt", ":terminal<CR>") -- open terminal
