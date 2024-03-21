@@ -17,15 +17,15 @@ require("core.options")
 require("core.keymaps")
 
 -- Initialize lazy with dynamic laoding of plugins
-require("lazy").setup({
-  spec = {
-    {import = "plugins"},
-    {import = "plugins.python"},
+require("lazy").setup(
+  {
+    { import = "plugins" },
+    { import = "plugins.python" },
   },
-  opts = {
+  {
     change_detection = {
-      enable = true,  -- Detect changes in the plugins directory
+      enable = false,  -- Detect changes in the plugins directory
       notify = false, -- Do not notify on changes
     }
   }
-})
+)
