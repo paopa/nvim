@@ -41,5 +41,5 @@ keymap.set("n", "<leader>shh", "<C-w><5") -- make split window width narrower
 keymap.set("n", "<leader>to", ":tabnew<CR>") -- new tab
 keymap.set("n", "<leader>tc", ":tabclose<CR>") -- close tab
 keymap.set("n", "<leader>tco", ":tabonly<CR>") -- close other tabs
-keymap.set("n", "<leader>tn", ":tabnext<CR>") -- next tab
-keymap.set("n", "<leader>tp", ":tabprevious<CR>") -- previous tab
+keymap.set("n", "<leader>]", ":tabnext<CR>") -- next tab
+keymap.set("n", "<leader>[", ":tabprevious<CR>") -- previous tab
