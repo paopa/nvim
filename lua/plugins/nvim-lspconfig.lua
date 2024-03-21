@@ -3,74 +3,89 @@ return {
   -- LSP Configuration
   -- https://github.com/neovim/nvim-lspconfig
   'neovim/nvim-lspconfig',
-  event = 'VeryLazy',
+  event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    -- LSP Management
-    -- https://github.com/williamboman/mason.nvim
-    { 'williamboman/mason.nvim' },
-    -- https://github.com/williamboman/mason-lspconfig.nvim
-    { 'williamboman/mason-lspconfig.nvim' },
-
     -- Useful status updates for LSP
     -- https://github.com/j-hui/fidget.nvim
-    { 'j-hui/fidget.nvim',                        opts = {} },
+    { 'j-hui/fidget.nvim',                   opts = {} },
 
     -- Additional lua configuration, makes nvim stuff amazing!
     -- https://github.com/folke/neodev.nvim
     { 'folke/neodev.nvim' },
-
-    -- Install or upgrade all of the third-part tools.
-    -- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim
-    { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
+    -- https://github.com/antosha417/nvim-lsp-file-operations
+    { "antosha417/nvim-lsp-file-operations", config = true },
   },
   config = function()
-    require('mason').setup()
-    require('mason-lspconfig').setup({
-      -- Install these LSPs automatically
-      ensure_installed = {
-        'bashls', -- requires npm to be installed
-        -- 'cssls', -- requires npm to be installed
-        -- 'html', -- requires npm to be installed
-        'lua_ls',
-        'jsonls', -- requires npm to be installed
-        'lemminx',
-        'marksman',
-        'quick_lint_js',
-        'yamlls', -- requires npm to be installed
-        'pyright',
-      }
-    })
-
-    require('mason-tool-installer').setup({
-      -- Install these linters, formatters, debuggers automatically
-      ensure_installed = {
-        'black',
-        'debugpy',
-        'flake8',
-        'isort',
-        'mypy',
-        'pylint',
-      },
-    })
-
-    -- There is an issue with mason-tools-installer running with VeryLazy,
-    -- since it triggers on VimEnter which has already occurred prior to this plugin loading
-    -- so we need to call install explicitly
-    -- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim/issues/39
-    vim.api.nvim_command('MasonToolsInstall')
-
     local lspconfig = require('lspconfig')
-    local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-    local lsp_attach = function(client, bufnr)
-      -- Create your keybindings here...
+    local cmp_nvim_lsp = require("cmp_nvim_lsp")
+
+    local keymap = vim.keymap -- for conciseness
+    local opts = { noremap = true, silent = true }
+
+    -- Global mappings
+    opts.desc = "Format Code"
+    keymap.set("n", "<leader>fc", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", opts)
+    keymap.set("v", "<leader>fc", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", opts)
+
+    local on_attach = function(client, bufnr)
+      opts.buffer = bufnr
+
+      -- LSP mappings
+      opts.desc = "Show LSP references"
+      keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+
+      opts.desc = "Go to declaration"
+      keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
+
+      opts.desc = "Show LSP definitions"
+      keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+
+      opts.desc = "Show LSP implementations"
+      keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
+
+      opts.desc = "Show LSP type definitions"
+      keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+
+      opts.desc = "Signature help"
+      keymap.set("n", "<leader>gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts) -- signature help
+
+      opts.desc = "Document symbol"
+      keymap.set("n", "<leader>ds", "<cmd>lua vim.lsp.buf.document_symbol()<CR>", opts) -- document symbol
+
+      opts.desc = "See available code actions"
+      keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+
+      opts.desc = "Smart rename"
+      keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
+
+      opts.desc = "Show buffer diagnostics"
+      keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
+
+      opts.desc = "Show line diagnostics"
+      keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
+
+      opts.desc = "Go to previous diagnostic"
+      keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+
+      opts.desc = "Go to next diagnostic"
+      keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+
+      opts.desc = "Show documentation for what is under cursor"
+      keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+
+      opts.desc = "Restart LSP"
+      keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
     end
+
+    -- used to enable autocompletion (assign to every lsp server config)
+    local capabilities = cmp_nvim_lsp.default_capabilities()
 
     -- Call setup on each LSP server
     require('mason-lspconfig').setup_handlers({
       function(server_name)
         lspconfig[server_name].setup({
-          on_attach = lsp_attach,
-          capabilities = lsp_capabilities,
+          on_attach = on_attach,
+          capabilities = capabilities,
         })
       end
     })
@@ -94,24 +109,5 @@ return {
       opts.border = opts.border or "rounded" -- Set border to rounded
       return open_floating_preview(contents, syntax, opts, ...)
     end
-
-    -- Keymaps for LSP
-    local keymap = vim.keymap
-    keymap.set('n', '<leader>gg', '<cmd>lua vim.lsp.buf.hover()<CR>')
-    keymap.set('n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
-    keymap.set('n', '<leader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
-    keymap.set('n', '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-    keymap.set('n', '<leader>gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
-    keymap.set('n', '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>')
-    keymap.set('n', '<leader>gs', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-    keymap.set('n', '<leader>rr', '<cmd>lua vim.lsp.buf.rename()<CR>')
-    keymap.set('n', '<leader>gf', '<cmd>lua vim.lsp.buf.format({async = true})<CR>')
-    keymap.set('v', '<leader>gf', '<cmd>lua vim.lsp.buf.format({async = true})<CR>')
-    keymap.set('n', '<leader>ga', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-    keymap.set('n', '<leader>gl', '<cmd>lua vim.diagnostic.open_float()<CR>')
-    keymap.set('n', '<leader>gp', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-    keymap.set('n', '<leader>gn', '<cmd>lua vim.diagnostic.goto_next()<CR>')
-    keymap.set('n', '<leader>tr', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
-    keymap.set('i', '<C-Space>', '<cmd>lua vim.lsp.buf.completion()<CR>')
   end
 }
