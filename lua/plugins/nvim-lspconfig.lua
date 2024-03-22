@@ -14,6 +14,7 @@ return {
     { 'folke/neodev.nvim' },
     -- https://github.com/antosha417/nvim-lsp-file-operations
     { "antosha417/nvim-lsp-file-operations", config = true },
+    { "stevanmilic/nvim-lspimport" },
   },
   config = function()
     local lspconfig = require('lspconfig')
