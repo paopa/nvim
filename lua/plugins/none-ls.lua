@@ -6,7 +6,10 @@ return {
 
 		null_ls.setup({
 			sources = {
-				null_ls.builtins.formatting.stylua, -- lua formatter
+        -- lua
+				null_ls.builtins.formatting.stylua, -- formatter
+        -- python
+        null_ls.builtins.formatting.ruff_lsp -- linter, formatter
 			},
 		})
 
