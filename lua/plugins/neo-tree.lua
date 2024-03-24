@@ -11,4 +11,11 @@ return {
 	keys = {
 		{ "<leader>ee", ":Neotree<CR>", desc = "Toggle file explorer" },
 	},
+  opts = {
+    filesystem = {
+      filtered_items = {
+        visible = true,
+      },
+    }
+  }
 }
