@@ -1,15 +1,15 @@
 -- this link is useful to generate ASCII art
 -- https://patorjk.com/software/taag
-local header = {
-	"                                                     ",
-	"  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
-	"  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
-	"  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
-	"  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
-	"  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
-	"  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
-	"                                                     ",
-}
+-- local header = {
+-- 	"                                                     ",
+-- 	"  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
+-- 	"  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
+-- 	"  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
+-- 	"  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
+-- 	"  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
+-- 	"  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
+-- 	"                                                     ",
+-- }
 
 local footer = {
 	"hello nerd, welcome to the world of nvim",
@@ -22,11 +22,11 @@ return {
 	config = function()
 		local alpha = require("alpha")
 		local dashboard = require("alpha.themes.dashboard")
-		local demo = require("plugins.alpha-headers.demo")
+		local header = require("plugins.headers.ai-hoshino")
 
 		-- Set header
-		dashboard.section.header.val = demo.header()
-		dashboard.section.header.opts.hl = demo.hl()
+		dashboard.section.header.val = header.header()
+		dashboard.section.header.opts.hl = header.hl()
 
 		-- Set menu
 		-- find icons at https://www.nerdfonts.com/cheat-sheet
