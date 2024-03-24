@@ -1,7 +1,7 @@
 
-This is a template to create a new alpha header. Copy the following contents of this file into a new file in the 
+This is an instruction to create a new alpha header. Copy the following Lua code of this file into a new file in the 
 `lua/plugins/headers` directory. Name the file after the module you are creating the header for. For example, 
-if you are creating a header for the `demo` module, name the file `demo.lua`. And, require it in `alpha.lua`
+if you are creating a `demo` header, name the file `demo.lua`. And, require it in `alpha.lua`
 
 ```lua
 local M = {}
