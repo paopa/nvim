@@ -20,12 +20,13 @@ return {
 	"goolord/alpha-nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		-- require("alpha").setup(require("alpha.themes.dashboard").config)
 		local alpha = require("alpha")
 		local dashboard = require("alpha.themes.dashboard")
+		local demo = require("plugins.alpha-headers.demo")
 
 		-- Set header
-		dashboard.section.header.val = header
+		dashboard.section.header.val = demo.header()
+		dashboard.section.header.opts.hl = demo.hl()
 
 		-- Set menu
 		-- find icons at https://www.nerdfonts.com/cheat-sheet
