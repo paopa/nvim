@@ -70,11 +70,15 @@ return {
 		opts.desc = "Restart LSP"
 		keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 
+		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 		-- Lua LSP settings
-		lspconfig.lua_ls.setup({})
+		lspconfig.lua_ls.setup({
+			capabilities = capabilities,
+		})
 
 		-- Ruff LSP settings
 		lspconfig.ruff_lsp.setup({
+			capabilities = capabilities,
 			on_attach = function(client, bufnr)
 				if client.name == "ruff_lsp" then
 					-- Disable hover in favor of Pyright
@@ -85,6 +89,7 @@ return {
 
 		-- Pyright LSP settings
 		lspconfig.pyright.setup({
+			capabilities = capabilities,
 			settings = {
 				pyright = {
 					-- Using Ruff's import organizer
