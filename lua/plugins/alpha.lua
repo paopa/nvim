@@ -1,16 +1,4 @@
--- this link is useful to generate ASCII art
--- https://patorjk.com/software/taag
--- local header = {
--- 	"                                                     ",
--- 	"  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
--- 	"  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
--- 	"  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
--- 	"  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
--- 	"  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
--- 	"  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
--- 	"                                                     ",
--- }
-
+-- See more alpha themes at https://github.com/goolord/alpha-nvim/discussions/16
 local footer = {
 	"hello nerd, welcome to the world of nvim",
 }
