@@ -4,7 +4,8 @@ return {
   fp = 'python',
   dependencies = { 'neovim/nvim-lspconfig', 'nvim-telescope/telescope.nvim', 'mfussenegger/nvim-dap-python' },
   opts = {
-    name = { ".venv" },
+    name = { ".venv", "venv" },
+    dap_enabled = true,
     -- auto_refresh = false
   },
   event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
