@@ -9,7 +9,8 @@ return {
 		"linux-cultist/venv-selector.nvim",
 	},
 	config = function()
-		-- Update the path passed to setup to point to your system or virtual env python binary
+    -- I use vertual environment, so everytime change the project that have to install
+    -- the `debugpy` in the virtual environment.
 		local path = require("venv-selector").get_active_path()
 		require("dap-python").setup(path)
 	end,
