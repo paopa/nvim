@@ -9,8 +9,7 @@ return {
     { "<leader>tt", ":ToggleTerm<CR>",            mode = "n", desc = "open terminal" },
     -- I saw the answer to solve how to exit terminal in the neovim in the following link
     -- https://www.reddit.com/r/neovim/comments/wk1vcc/how_to_exit_terminal_or_float_term/
-    { "<C-t>",      "<C-\\><C-n>:ToggleTerm<CR>", mode = "t", desc = "close terminal" },
-    { "<Esc><Esc>", "<C-\\><C-n>",                mode = "t", desc = "escape work in the terminal mode" },
+    { "<C-t>",      "<C-\\><C-n>", mode = "t", desc = "escape terminal mode" },
     {
       "<leader>lg",
       "<cmd>lua _lazygit_toggle()<CR>",
