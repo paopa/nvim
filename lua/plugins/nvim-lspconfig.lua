@@ -67,6 +67,7 @@ return {
     opts.desc = "Smart rename"
     keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
 
+    -- see https://github.com/prabirshrestha/vim-lsp/issues/434
     opts.desc = "Go back"
     keymap.set("n", "gb", "<C-O>", opts) -- Go back from definition, declaration, etc
 
