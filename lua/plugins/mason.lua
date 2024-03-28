@@ -31,6 +31,7 @@ return {
         "yamlls", -- requires npm to be installed
         "ruff_lsp", -- python linter and formatter
         "pyright", -- python language server
+        "checkmake" -- makefile
       },
       automatic_installation = true,
     })
