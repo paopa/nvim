@@ -39,8 +39,8 @@ return {
       -- Install these linters, formatters, debuggers automatically
       ensure_installed = {
         "stylua", -- lua formatter
-        "debugpy",
-        "checkmake" -- makefile
+        "debugpy", -- dap for python
+        "checkmake", -- makefile
       },
     })
 
