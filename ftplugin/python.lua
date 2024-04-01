@@ -8,7 +8,7 @@ local keymap = vim.keymap
 --   end
 -- end)
 
-keymap.set("n", '<leader>tc', function()
+keymap.set("n", '<leader>dtc', function()
   if vim.bo.filetype == 'python' then
     require('dap-python').test_class();
   end
