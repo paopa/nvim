@@ -4,7 +4,6 @@
 local function python_path_env(venv_path, venv_python)
 	local version = io.popen(venv_python .. " --version"):read("*a"):match("Python (%d+.%d+)")
 	local lib_path = venv_path .. "/lib/python" .. version .. "/site-packages"
-	print(lib_path)
 	vim.fn.setenv("PYTHONPATH", lib_path)
 end
 
