@@ -10,7 +10,8 @@ return {
 	config = function()
 		local alpha = require("alpha")
 		local dashboard = require("alpha.themes.dashboard")
-		local header = require("plugins.headers.ai-hoshino")
+    -- todo: randomize the headers
+		local header = require("plugins.headers.cyberpunk-lucy")
 
 		-- Set header
 		dashboard.section.header.val = header.header()
