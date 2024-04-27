@@ -21,6 +21,7 @@ require("lazy").setup(
   {
     { import = "plugins" },
     { import = "plugins.python" },
+    { import = "plugins.rust" },
   },
   {
     change_detection = {
