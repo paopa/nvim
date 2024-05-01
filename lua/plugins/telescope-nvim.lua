@@ -108,6 +108,13 @@ return {
         -- In Vim, a "WORD" is a sequence of non-blank characters, separated with white space.
         -- This means it includes punctuation and other special characters as part of the WORD.
       },
+      {
+        "<leader>km",
+        function()
+          require("telescope.builtin").keymaps()
+        end,
+        desc = "Open the keymaps in the telescope",
+      }
     }
   },
   {
