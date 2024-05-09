@@ -21,6 +21,12 @@ return {
 			mode = "n",
 			desc = "Debug the nearest test (requires nvim-dap and adapter support)",
 		},
+		{
+			"<leader>no",
+			':lua require("neotest").output_panel.open()<CR>',
+			mode = "n",
+			desc = "Records all output of tests over time in a single window",
+		},
 	},
 	config = function()
 		require("neotest").setup({
