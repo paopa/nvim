@@ -58,5 +58,6 @@
   "toggleterm.nvim": { "branch": "main", "commit": "066cccf48a43553a80a210eb3be89a15d789d6e6" },
   "venv-selector.nvim": { "branch": "main", "commit": "9b1bfe5aea225853e14358f504c656d4af007035" },
   "vim-commentary": { "branch": "master", "commit": "c4b8f52cbb7142ec239494e5a2c4a512f92c4d07" },
-  "vim-maximizer": { "branch": "master", "commit": "2e54952fe91e140a2e69f35f22131219fcd9c5f1" }
+  "vim-maximizer": { "branch": "master", "commit": "2e54952fe91e140a2e69f35f22131219fcd9c5f1" },
+  "window-picker": { "branch": "main", "commit": "41cfaa428577c53552200a404ae9b3a0b5719706" }
 }
