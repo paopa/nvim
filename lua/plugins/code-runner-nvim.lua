@@ -1,15 +1,7 @@
 return {
 	-- https://github.com/CRAG666/code_runner.nvim
 	"CRAG666/code_runner.nvim",
-	opts = {
-		filetypes = {
-			-- I'm not sure why but it doesn't work with the filetype setting.
-			-- I try to set the PYTHONPATH before running the code, but it doesn't work.
-			-- python = {
-			--   "python3 -u",
-			-- },
-		},
-	},
+	opts = {},
 	keys = {
 		{ "<leader>r", ":RunCode<CR>", { noremap = true, silent = false } },
 		{ "<leader>rf", ":RunFile<CR>", { noremap = true, silent = false } },
