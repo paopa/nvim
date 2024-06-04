@@ -10,7 +10,7 @@ return {
 	config = function()
 		local alpha = require("alpha")
 		local dashboard = require("alpha.themes.dashboard")
-    -- todo: randomize the headers
+		-- todo: randomize the headers
 		local header = require("plugins.headers.cyberpunk-lucy")
 
 		-- Set header

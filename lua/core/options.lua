@@ -35,16 +35,16 @@ opt.background = "dark" -- Set the default background to dark
 opt.signcolumn = "yes" -- Always show the sign column, otherwise it would shift the text each time
 opt.colorcolumn = "120" -- Highlight the 120th column
 vim.diagnostic.config({
-    float = {
-        border = "rounded", -- add rounded border to the diagnostics
-    }
+	float = {
+		border = "rounded", -- add rounded border to the diagnostics
+	},
 })
 
 -- Backspace
 opt.backspace = "indent,eol,start" -- Allow backspacing over everything in insert mode
 
 -- Clipboard
-vim.api.nvim_set_option("clipboard","unnamed")
+vim.api.nvim_set_option("clipboard", "unnamed")
 
 -- Split Window
 opt.splitright = true
@@ -54,7 +54,7 @@ opt.splitbelow = true
 opt.swapfile = false
 opt.backup = false
 
--- Undodir 
+-- Undodir
 opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 opt.undofile = true
 
@@ -72,5 +72,3 @@ opt.mouse = "" -- Disable mouse support
 opt.foldlevel = 20 -- Maximum fold depth when starting editing
 opt.foldmethod = "expr" -- Use expression to determine folds
 opt.foldexpr = "nvim_treesitter#foldexpr()" -- Use treesitter to determine folds
-
-

@@ -2,7 +2,7 @@
 -- and using code runner plugin to run the code with the selected interpreter.
 
 return {
-    -- https://github.com/linux-cultist/venv-selector.nvim/tree/regexp
+	-- https://github.com/linux-cultist/venv-selector.nvim/tree/regexp
 	"linux-cultist/venv-selector.nvim",
 	dependencies = {
 		"neovim/nvim-lspconfig",
