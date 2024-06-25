@@ -66,7 +66,7 @@ opt.iskeyword:append("-") -- Add - to the list of characters that are allowed in
 opt.updatetime = 50 -- I disable swapfile, so it only used for CursorHold autocommand events
 
 -- Mouse
-opt.mouse = "" -- Disable mouse support
+-- opt.mouse = "" -- Disable mouse support
 
 -- Folding
 opt.foldlevel = 20 -- Maximum fold depth when starting editing
