@@ -3,7 +3,8 @@ return {
 	"akinsho/toggleterm.nvim",
 	version = "*",
 	opts = {
-		direction = "tab",
+		direction = "vertical",
+		size = 80,
 	},
 	keys = {
 		{ "<leader>tt", ":ToggleTerm<CR>", mode = "n", desc = "open terminal" },
